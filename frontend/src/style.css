@@ -1,0 +1,111 @@
+.logoText {
+  font-family: "Brush Script MT";
+  font-size: xx-large;
+
+  background: -webkit-linear-gradient(#eee, rgb(29, 3, 88));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn-blue {
+  background-color: #221db8;
+  color: #fff;
+  width: 100%;
+}
+
+.btn-blue:hover {
+  background-color: rgb(20, 18, 153);
+  color: #fff;
+}
+
+.bg-blue {
+  color: #fff;
+  background-color: #221db8;
+}
+
+@media screen and (max-width: 991px) {
+  .logo {
+    margin-left: 0px;
+  }
+
+  .image {
+    width: 600px;
+    height: 220px;
+  }
+
+  .border-line {
+    border-right: none;
+  }
+
+  .card2 {
+    margin: 20px 15px;
+  }
+}
+
+.login-container > *:first-child {
+  width: 35%;
+}
+.login-container > *:last-child {
+  width: 50%;
+}
+.update-container {
+  width: 50%;
+}
+.update-container img {
+  width: 15vw;
+  height: 15vw;
+}
+.update-container i {
+  font-size: 7vw;
+  padding: 4vw;
+}
+
+@media screen and (max-width: 576px) {
+  .login-container {
+    flex-direction: column;
+  }
+  .login-container > *:first-child h6 {
+    font-size: 10vw !important;
+  }
+  .login-container > *:first-child {
+    width: 70%;
+  }
+  .login-container > *:last-child {
+    width: 100%;
+  }
+  .update-container {
+    width: 100%;
+  }
+  .update-container img {
+    width: 40vw;
+    height: 40vw;
+  }
+  .update-container i {
+    font-size: 12vw;
+    padding: 12vw;
+  }
+}
+@media screen and (max-width: 300px) {
+  .update-container i {
+    font-size: 15vw;
+    padding: 15vw;
+  }
+}
+
+.btn-custom {
+  box-shadow: none !important;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+}
+
+.btn-block {
+  width: 100%;
+}
+.btn-icon{
+  line-height: initial;
+  padding: initial;
+}
+.img{
+  object-fit: cover;
+}

@@ -1,0 +1,10 @@
+{
+  "urls":{
+    "login": "http://localhost:3001/login/",
+    "logout": "http://localhost:3001/logout/",
+    "register": "http://localhost:3001/register/",
+    "update": "http://localhost:3001/update/",
+    "autologin": "http://localhost:3001/autoLogin/",
+    "addemployee": "http://localhost:3001/addEmployee/"
+  }
+}
