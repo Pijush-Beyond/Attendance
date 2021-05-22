@@ -7,9 +7,11 @@ export const signIn = (req, res, data) => {
     { data },
     fs.readFileSync('secret.key'),
   ));
+  return true;
 }
 
 export default (req, res, next) => {
+  // console.log('This is in authentication');
   let token;
   if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
     token = req.headers.authorization.split(' ')[1];
@@ -22,6 +24,7 @@ export default (req, res, next) => {
       const data = jwt.verify(token, fs.readFileSync('secret.key'));
       req.user = data.data;
       next();
+      return true;
     } catch (e) {
       const error = new Error('You are not logged in.');
       error.status = 401;

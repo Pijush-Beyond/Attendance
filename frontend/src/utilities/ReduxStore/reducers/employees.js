@@ -12,7 +12,19 @@ const companyReducer = createSlice({
     addemployee: (state, action) => {
       console.log('kssk');
       state.push(action.payload)},
-    removeemployee: (state, action) => state.splice(action.index, 1)
+    removeemployee: (state, action) => state.splice(state.findIndex(employee => employee._id === action.payload), 1),
+    addSlot: (state, action) => {
+      const d = new Date(action.payload.date);
+      for (let employee of state) {
+        if (employee._id === action.payload.employee) {
+          if (!employee.profile.timeLine) employee.profile.timeLine = { [d.getFullYear()]: { [d.getMonth()]: { [d.getDate()]: { slot: action.payload.slot, status: false } } } };
+          else if (!employee.profile.timeLine[d.getFullYear()]) employee.profile.timeLine[d.getFullYear()] = { [d.getMonth()]: { [d.getDate()]: { slot: action.payload.slot, status: false } } };
+          else if (!employee.profile.timeLine[d.getFullYear()][d.getMonth()]) employee.profile.timeLine[d.getFullYear()][d.getMonth()] = { [d.getDate()]: { slot: action.payload.slot, status: false } };
+          else employee.profile.timeLine[d.getFullYear()][d.getMonth()][d.getDate()] = { slot: action.payload.slot, status: false };
+          break;
+        }
+      }
+    }
   }
 })
 
@@ -36,6 +48,6 @@ export const remove_employee = (emplyoee, index) => (dispatch, getState) => {
 }
 
 
-export const { setemployees, addemployee, removeemployee } = companyReducer.actions;
+export const { setemployees, addemployee, removeemployee, addSlot } = companyReducer.actions;
 
 export default companyReducer.reducer;

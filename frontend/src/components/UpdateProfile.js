@@ -129,13 +129,15 @@ export default function UpdateProfile({ type }) {
             <div className="d-flex flex-column">
               <span className="form-label">Name:</span>
               <span className="form-label">Gender: &nbsp;</span>
+              <span className="form-label">Email:</span>
             </div>
             <div className="d-flex flex-column">
               <span className="form-label">{`${user.profile.firstName} ${user.profile.lastname || ''}`}</span>
               <span className="form-label">{user.profile.gender || "Male"}</span>
+              <span className="form-label">{user.email}</span>
             </div>
           </div>
-          <Link to="/updateProfile" className="btn btn-blue">Edit Profile</Link>
+          <Link to="/updateProfile" className="btn btn-primary">Edit Profile</Link>
         </>
       }
     </form>

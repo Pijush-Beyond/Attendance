@@ -32,8 +32,10 @@ export default new mongoose.Schema({
   history: [{
     date: { type: Date, required: true },
     slot: { type: Number, required: true }
-  }]
+  }],
+  timeLine: {}
 }, {
   timestamps: false,
   skipVersioning: { dontVersionMe: true },
+  strict: false
 })

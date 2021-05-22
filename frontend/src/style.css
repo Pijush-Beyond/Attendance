@@ -109,3 +109,18 @@
 .img{
   object-fit: cover;
 }
+.active{
+  background-color: var(--bs-primary);
+  color: white;
+  opacity: 1!important;
+}
+.btn-outline-primary{
+  background-color: white;
+}
+
+::-webkit-scrollbar{
+  width: 10px;
+}
+/* ::-webkit-scrollbar-thumb{
+
+} */

@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import { urls } from "../config.json";
+import Notifications from './Notifications';
 
 export default function NavBar() {
   const user = useSelector(state => state.user.data);
@@ -17,9 +18,9 @@ export default function NavBar() {
         <div className="d-flex align-items-center">
           {mobile &&
             <>
-              <button className="fas fa-bars mx-2 btn btn-outline-primary fw-bold btn-icon px-2 py-1 fs-1" onClick={() => setOpenMenu(true)}></button>
-              <div className="position-fixed top-0 bottom-0 start-0 end-0 navbar padding-0 justify-content-start align-items-start flex-column" style={{ backgroundColor: '#fffffff0', display: openMenu ? 'flex' : 'none' }}>
-                <button className="fas fa-times mx-3 btn fw-bold btn-icon px-2 py-1 fs-1" onClick={() => setOpenMenu(false)}></button>
+            <button className="fas fa-bars mx-2 btn btn-outline-primary fw-bold btn-icon px-2 py-1 fs-1" onClick={() => { setOpenMenu(true); document.body.style.overflow = 'hidden';}}></button>
+              <div className="position-fixed top-0 bottom-0 start-0 end-0 navbar padding-0 justify-content-start align-items-start flex-column" style={{ backgroundColor: '#fffffff0', display: openMenu ? 'flex' : 'none', zIndex:10 }}>
+              <button className="fas fa-times mx-3 btn fw-bold btn-icon px-2 py-1 fs-1" onClick={() => { setOpenMenu(false); document.body.style.overflow = 'initial';}}></button>
                 {user.superUser && <Link onClick={() => setOpenMenu(false)} to="/addEmployee" className="btn btn-outline-success btn-custom btn-block text-start">Add Employee</Link>}
                 <Link to="/profile" onClick={() => setOpenMenu(false)} className="btn btn-outline-success btn-custom btn-block text-start">Profile</Link>
                 <a href={urls.logout} className="btn btn-outline-warning btn-custom btn-block text-start">Logout</a>
@@ -73,15 +74,22 @@ export default function NavBar() {
               :
               <i className="far fa-user-circle mx-2" style={{ fontSize: mobile ? '10vw' : 45 }}></i>
           }
-          {
+          {/* {
             mobile ?
-              <button className="fas fa-bell me-3 btn fw-bold btn-icon fs-3"></button>
+              <button className="fas fa-bell me-3 btn fw-bold btn-icon fs-3" onClick={() => setOpenNotification(true)}></button>
               :
-              <a href={urls.logout} className="btn btn-outline-warning text-start me-2" onClick={()=> setOpenNotification(true)}>Logout</a>
-          }
+              <a href={urls.logout} className="btn btn-outline-warning text-start me-2">Logout</a>
+          } */}
+          {!mobile && <a href={urls.logout} className="btn btn-outline-warning text-start me-2">Logout</a>}
         </div>
       </nav>
-
+      {/* {
+        mobile && openNotification &&
+        <div className="position-fixed top-0 bottom-0 start-0 end-0 d-flex flex-column align-items-start" style={{ backgroundColor: '#fffffff0', zIndex: 100}}>
+          <button className="fas fa-times m-2 btn fw-bold btn-icon px-2 py-1 fs-1" onClick={() => setOpenNotification(false)}></button>
+          <Notifications />
+        </div>
+      } */}
     </>
   )
 }

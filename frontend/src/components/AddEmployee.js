@@ -42,7 +42,7 @@ export default function AddEmployee() {
       })
   }
 
-  document.title = `${company.name} | Add User`;
+  document.title = `Add User | ${company.name}`;
 
   return (
     <form className={`flex-column d-flex justify-content-center align-items-center container-sm update-container`} style={{ minHeight: mobile ? 'calc(91vh)' : 'calc(100vh - 75.02px)' }} onSubmit={onSubmit} >

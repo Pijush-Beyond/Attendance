@@ -5,6 +5,8 @@
     "register": "http://localhost:3001/register/",
     "update": "http://localhost:3001/update/",
     "autologin": "http://localhost:3001/autoLogin/",
-    "addemployee": "http://localhost:3001/addEmployee/"
+    "addemployee": "http://localhost:3001/addEmployee/",
+    "accepetSlot": "http://localhost:3001/slot",
+    "giveSlot": "http://localhost:3001/slot"
   }
 }

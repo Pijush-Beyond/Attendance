@@ -10,6 +10,8 @@ dotenv.config();
 
 import authentication from './src/routers/authenticate.js';
 import errorlogger from './src/utilities/errorlogger.js';
+import slot from './src/routers/slot.js';
+// import Slot from './src/routers/slot.js';
 
 const app = express();
 
@@ -47,6 +49,15 @@ app.use(express.static(path.join(path.resolve('./'), 'public')))
 
 // routers starts here
 app.use(authentication);
+app.use(slot)
+
+
+// app.all('/slot/:year/:month/:date', async (req, res, next) => {
+//   const router = new Slot();
+//   const response = await router.asRouter(req, res, next);
+//   console.log(response);
+//   res.status(500).send('demo');
+// })
 // ends here
 
 

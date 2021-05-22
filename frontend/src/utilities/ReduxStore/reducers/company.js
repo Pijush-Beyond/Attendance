@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 
-const timeSlot = ['mroring', 'regular', 'afternoon'];
+const timeSlots = ['mroring', 'regular', 'afternoon'];
 
 const companyReducer = createSlice({
   name: 'company',
   initialState: {},
   reducers: {
-    setcompany: (state, action) => ({ ...action.payload, timeSlot}),
+    setcompany: (state, action) => ({ ...action.payload, timeSlots}),
     addemployee: (state, action) => state.users.push(action.payload),
     removeemployee: (state, action) => state.splice(action.index,1)
   }

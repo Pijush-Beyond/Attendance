@@ -6,12 +6,24 @@ import { setemployees } from "./employees";
 
 const reducer =  createSlice({
   name: 'user',
-  initialState: {fetched: false},
+  initialState: {fetched: false,a: new Date().toLocaleDateString()},
   reducers: {
     setuser: (state, action) => ({ ...state, data: action.payload, fetched: true}),
     setprofile: (state, action) => { state.data.profile = action.payload},
     logout: (state) => ({ fetched: true }),
     just: () => ({ fetched: true }),
+    accepetSlot: (state, action) => {
+      const date = new Date(action.payload);
+      state.data.profile.timeLine[date.getFullYear()][date.getMonth()][date.getDate()].status = true;
+      // return { fetched: false, data: { ...state, profile: { ...state.data.profile, timeLine: state.data.profile.timeLine[date.getFullYear()][date.getMonth()][date.getDate()].status = true } } };
+      // state.a = new Date().toLocaleDateString();
+      // return {}
+    },
+    denieSlot: (state, action) => {
+      const date = new Date(action.payload);
+      delete state.data.profile.timeLine[date.getFullYear()][date.getMonth()][date.getDate()];
+      state.data.fetched = true;
+    }
     // setunchanged: (state) => {state.changed=false},
   },
 })
@@ -32,5 +44,5 @@ export const autologin = () => dispatch =>{
       dispatch(logout(true));
     })
 }
-export const { setuser, logout, setprofile, setunchanged} =  reducer.actions;
+export const { setuser, logout, setprofile, setunchanged, denieSlot, accepetSlot} =  reducer.actions;
 export default reducer.reducer;
