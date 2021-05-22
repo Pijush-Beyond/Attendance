@@ -15,8 +15,9 @@ const companyReducer = createSlice({
     removeemployee: (state, action) => state.splice(state.findIndex(employee => employee._id === action.payload), 1),
     addSlot: (state, action) => {
       const d = new Date(action.payload.date);
-      for (let employee of state) {
+      for (let employee of [...state]) {
         if (employee._id === action.payload.employee) {
+          // console.log('this is in reducer');
           if (!employee.profile.timeLine) employee.profile.timeLine = { [d.getFullYear()]: { [d.getMonth()]: { [d.getDate()]: { slot: action.payload.slot, status: false } } } };
           else if (!employee.profile.timeLine[d.getFullYear()]) employee.profile.timeLine[d.getFullYear()] = { [d.getMonth()]: { [d.getDate()]: { slot: action.payload.slot, status: false } } };
           else if (!employee.profile.timeLine[d.getFullYear()][d.getMonth()]) employee.profile.timeLine[d.getFullYear()][d.getMonth()] = { [d.getDate()]: { slot: action.payload.slot, status: false } };

@@ -11,7 +11,6 @@ export default function Calender({ selectedDate, setSelectedDate }) {
   const mobile = useMediaQuery({ maxWidth: 576 });
   const user = useSelector(state => state.user.data, _.isEqual);
   const [date, setDate] = useState(null);
-  console.log(user);
 
   const dateDisplayFormater = ({ date, view }) => {
     const slot = user.profile.timeLine?.[date.getFullYear()]?.[date.getMonth()+1]?.[date.getDate()];

@@ -14,14 +14,14 @@ const reducer =  createSlice({
     just: () => ({ fetched: true }),
     accepetSlot: (state, action) => {
       const date = new Date(action.payload);
-      state.data.profile.timeLine[date.getFullYear()][date.getMonth()][date.getDate()].status = true;
+      state.data.profile.timeLine[date.getFullYear()][date.getMonth()+1][date.getDate()].status = true;
       // return { fetched: false, data: { ...state, profile: { ...state.data.profile, timeLine: state.data.profile.timeLine[date.getFullYear()][date.getMonth()][date.getDate()].status = true } } };
       // state.a = new Date().toLocaleDateString();
       // return {}
     },
     denieSlot: (state, action) => {
       const date = new Date(action.payload);
-      delete state.data.profile.timeLine[date.getFullYear()][date.getMonth()][date.getDate()];
+      delete state.data.profile.timeLine[date.getFullYear()][date.getMonth()+1][date.getDate()];
       state.data.fetched = true;
     }
     // setunchanged: (state) => {state.changed=false},

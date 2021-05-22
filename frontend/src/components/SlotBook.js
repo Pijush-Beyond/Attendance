@@ -1,14 +1,17 @@
 import axios from 'axios';
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import _ from "underscore";
 import defaultDp from '../public/user.svg'
 import { loading, notloading } from '../utilities/ReduxStore/reducers/loading';
 import { addSlot } from '../utilities/ReduxStore/reducers/employees';
 
 import { urls } from "../config.json";
+import moment from 'moment';
 
 export default function SlotBook({ _id, set_id, selectedDate}) {
   const employee = useSelector(state => state.employees.find(employee => employee._id === _id));
+  // const employee = useSelector(state => state.employees.find(employee => employee._id === _id), (prev, next) => { console.log(prev, next); return false});
   const timeSlots = useSelector(state => state.company.timeSlots);
   const dispatch = useDispatch()
 
@@ -30,7 +33,6 @@ export default function SlotBook({ _id, set_id, selectedDate}) {
         }
       })
       .then(data => {
-        console.log({ slot: form.timeSlot.value, date: selectedDate.toLocaleDateString(), employee: employee._id });
         dispatch(notloading());
         dispatch(addSlot({ slot: form.timeSlot.value, date: selectedDate.toLocaleDateString(), employee: employee._id}));
         alert('successfull');
@@ -45,10 +47,10 @@ export default function SlotBook({ _id, set_id, selectedDate}) {
     <form onSubmit={handleSlotBook} className="w-100 d-flex flex-column justify-content-center align-items-center px-2" style={{ height: 'calc(100% - 37px)' }}>
       <img src={employee.profile?.dp || defaultDp} alt="employee" className="img rounded-circle" style={{width:120, height:120}}/>
       <div className="mb-2 fs-3 fw-bold">
-        {`${employee.profile.firstName} ${employee.profile.lastname || ''}`}
+        {`${employee.profile.firstName} ${employee.profile.lastName || ''}`}
       </div>
       <div className="mb-2 fs-3 fw-bold">
-        {selectedDate.toLocaleDateString()}
+        {moment(selectedDate).format('Do MMM y')}
       </div>
       <div className="mb-2">
         <label htmlFor="timeSlot" className="form-label fw-bold">Choose:</label>
