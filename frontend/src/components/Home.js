@@ -18,7 +18,7 @@ export default function Home() {
 
   // console.log(selectedEmployeeId)
 
-  document.title = `Home | ${companyName} | ${userProfile?.firstName ? `${userProfile.firstName} ${userProfile.lastName}` : ''}`
+  document.title = `Attendance | ${companyName} | ${userProfile?.firstName ? `${userProfile.firstName} ${userProfile.lastName}` : ''}`
   return (
     <IdContext.Provider value={{ _id, set_id}}>
       <main className={`d-flex pt-1 ${mobile ? 'flex-column' : ''}`} style={{ minHeight: mobile ? 'calc(91vh)' : 'calc(100vh - 75px)' }}>

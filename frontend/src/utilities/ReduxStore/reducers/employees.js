@@ -9,19 +9,17 @@ const companyReducer = createSlice({
   initialState: [],
   reducers: {
     setemployees: (state, action) => action.payload,
-    addemployee: (state, action) => {
-      console.log('kssk');
-      state.push(action.payload)},
+    addemployee: (state, action) => state.push(action.payload),
     removeemployee: (state, action) => state.splice(state.findIndex(employee => employee._id === action.payload), 1),
     addSlot: (state, action) => {
       const d = new Date(action.payload.date);
       for (let employee of state) {
         if (employee._id === action.payload.employee) {
           // console.log('this is in reducer');
-          if (!employee.profile.timeLine) employee.profile.timeLine = { [d.getFullYear()]: { [d.getMonth()]: { [d.getDate()]: { slot: action.payload.slot, status: false } } } };
-          else if (!employee.profile.timeLine[d.getFullYear()]) employee.profile.timeLine[d.getFullYear()] = { [d.getMonth()]: { [d.getDate()]: { slot: action.payload.slot, status: false } } };
-          else if (!employee.profile.timeLine[d.getFullYear()][d.getMonth()]) employee.profile.timeLine[d.getFullYear()][d.getMonth()] = { [d.getDate()]: { slot: action.payload.slot, status: false } };
-          else employee.profile.timeLine[d.getFullYear()][d.getMonth()][d.getDate()] = { slot: action.payload.slot, status: false };
+          if (!employee.profile.timeLine) employee.profile.timeLine = { [d.getFullYear()]: { [d.getMonth()+1]: { [d.getDate()]: { slot: action.payload.slot, status: false } } } };
+          else if (!employee.profile.timeLine[d.getFullYear()]) employee.profile.timeLine[d.getFullYear()] = { [d.getMonth()+1]: { [d.getDate()]: { slot: action.payload.slot, status: false } } };
+          else if (!employee.profile.timeLine[d.getFullYear()][d.getMonth()+1]) employee.profile.timeLine[d.getFullYear()][d.getMonth()+1] = { [d.getDate()]: { slot: action.payload.slot, status: false } };
+          else employee.profile.timeLine[d.getFullYear()][d.getMonth()+1][d.getDate()] = { slot: action.payload.slot, status: false };
           break;
         }
       }

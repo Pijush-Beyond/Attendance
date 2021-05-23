@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 
-const timeSlots = ['mroring', 'regular', 'afternoon'];
+const timeSlots = ['Morning', 'Regular', 'Afternoon'];
 
 const companyReducer = createSlice({
   name: 'company',
