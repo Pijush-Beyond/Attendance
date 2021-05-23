@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 import { useMediaQuery } from "react-responsive";
 import Details from './Details';
-import { IdContext } from './Home';
+// import { IdContext } from './Home';
 import SlotBook from './SlotBook';
 
 export default function Employee(props) {

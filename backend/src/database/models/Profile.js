@@ -14,25 +14,17 @@ export default new mongoose.Schema({
   firstName: {type: String, trim: true},
   lastName: { type: String, trim: true },
   gender: {
-    type: Number,
-    enum: [0,1,2],
-    get: (v) => {
-      const genderToEmun = { 0: "Male", 1: "Female", 2: "Others" };
-      return genderToEmun[v];
-    },
-    set: (v) => {
-      const genderToEmun = {"Male": 0, "Female": 1, "Others": 2};
-      return genderToEmun[v];
-    }
+    type: String,
+    enum: ['Male','Female',"Others"],
+    // get: (v) => {
+    //   const genderToEmun = { 0: "Male", 1: "Female", 2: "Others" };
+    //   return genderToEmun[v];
+    // },
+    // set: (v) => {
+    //   const genderToEmun = {"Male": 0, "Female": 1, "Others": 2};
+    //   return genderToEmun[v];
+    // }
   },
-  upComingSlot: {
-    date: Date,
-    slot: Number
-  },
-  history: [{
-    date: { type: Date, required: true },
-    slot: { type: Number, required: true }
-  }],
   timeLine: {}
 }, {
   timestamps: false,

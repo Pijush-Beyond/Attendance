@@ -10,10 +10,9 @@ import { urls } from "../config.json";
 import moment from 'moment';
 
 export default function SlotBook({ _id, set_id, selectedDate}) {
-  const employee = useSelector(state => state.employees.find(employee => employee._id === _id));
-  // const employee = useSelector(state => state.employees.find(employee => employee._id === _id), (prev, next) => { console.log(prev, next); return false});
+  const employee = useSelector(state => state.employees.find(employee => employee._id === _id), _.isEqual);
   const timeSlots = useSelector(state => state.company.timeSlots);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
 
   const handleSlotBook = (e) => {

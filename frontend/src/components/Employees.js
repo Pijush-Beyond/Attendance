@@ -1,10 +1,10 @@
-import React, { useContext, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React  from 'react';
+import {  useSelector } from 'react-redux';
 import defaultUser from '../public/user.svg'
-import { selectemployee } from "../utilities/ReduxStore/reducers/employee";
+// import { selectemployee } from "../utilities/ReduxStore/reducers/employee";
 import { useMediaQuery } from "react-responsive";
 
-import { IdContext } from "./Home";
+// import { IdContext } from "./Home";
 
 export default function Employees({ _id, set_id }) {
   const superUser = useSelector(state => state.user.data.superUser);

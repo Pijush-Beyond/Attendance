@@ -2,7 +2,7 @@ import React, { createContext, useReducer, useState } from 'react';
 import Employees from './Employees';
 import { useMediaQuery } from "react-responsive";
 import Calender from './Calender';
-import Notifications from './Notifications';
+// import Notifications from './Notifications';
 import { useSelector } from 'react-redux';
 import Employee from './Employee';
 

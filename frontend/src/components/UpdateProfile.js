@@ -7,17 +7,17 @@ import { setprofile } from '../utilities/ReduxStore/reducers/user';
 import toObject from '../utilities/toObject';
 import { Link, Redirect } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive';
-import { setchanged, setunchanged } from '../utilities/ReduxStore/reducers/prfileChanged';
+// import { setchanged, setunchanged } from '../utilities/ReduxStore/reducers/prfileChanged';
 
 export default function UpdateProfile({ type }) {
   const user = useSelector(state => state.user.data);
   // const [user, setUser] = useState(userFromStore);
-  const changed = useSelector(state => state.profileChanged);
+  // const changed = useSelector(state => state.profileChanged);
   const [error, setError] = useState({ dp: false, error: '', firstName: false });
   const [submitFlag, setSubmitFlag] = useState(false);
   const [dp, setDp] = useState(user?.profile?.dp);
   const dispatch = useDispatch();
-  // const [redirect, setRedirect] = useState(false);
+  const [redirect, setRedirect] = useState(false);
   const mobile = useMediaQuery({ maxWidth: 576 });
 
   const handleImageLoad = async (e) => {
@@ -30,15 +30,17 @@ export default function UpdateProfile({ type }) {
   //   console.log(changed);
   //   if (changed) setRedirect(true);
   // }, [changed]);
-  useEffect(() => {
-    dispatch(setunchanged());
-  },[])
+
+
+  // useEffect(() => {
+  //   dispatch(setunchanged());
+  // },[])
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const form = [...e.currentTarget].slice(0, 7);
+    const form = e.currentTarget;
     dispatch(loading());
-    for (let iTag of form)
+    for (let iTag of form.elements)
       if (!iTag.validity.valid) {
         setError({ ...error, [iTag.name]: true });
         setSubmitFlag(true);
@@ -46,13 +48,15 @@ export default function UpdateProfile({ type }) {
         return;
       }
 
+    // const profile = form);
+
     try {
-      await axios.put(urls.update, new FormData(e.currentTarget), {
+      await axios.put(urls.update, new FormData(form), {
         "withCredentials": true,
       })
-      // setRedirect(true);
-      dispatch(setchanged());
+      setRedirect(true);
       dispatch(setprofile({ ...toObject(form), dp }));
+      // setTimeout(() => { setRedirect(true); dispatch(notloading());},1000)
     } catch (e) {
       if (e.response) setError({ ...error, ...e.response.data.error });
       else alert("Something went wrong!!");
@@ -66,12 +70,12 @@ export default function UpdateProfile({ type }) {
     setError({ ...error, [iTag.name]: false, error: '' });
   }
 
-  // console.log(redirect, user);
+  console.log(redirect, user);
 
   document.title = type === 2 ? `Profile | ${user.profile.firstName} ${user.profile.lastname || ''}`:user?.active ? 'Update Profile' : 'Setup Profile';
   // debugger;
-  if (changed) return <Redirect to="/" />
-  // if (redirect) return <Redirect to="/" />
+  // if (changed) return <Redirect to="/" />
+  if (redirect) return <Redirect to="/" />
   else if (!user) return <Redirect to="/login" />
   else if (user.active && type===0) return <Redirect to="/updateProfile" />
   else return (
@@ -104,16 +108,16 @@ export default function UpdateProfile({ type }) {
           <div className="mb-2 w-100">
             <label className="form-label d-block" defaultValue={(user.profile && user.profile.gender) || ''}>Gender</label>
             <span className="form-check d-inline-block mx-2">
-              <input className="form-check-input" type="radio" name="gender" id="male" value="male" defaultChecked={!user.profile?.gender || user.profile.gender === 'male'} />
-              <label className="form-check-label" htmlFor="male">Male</label>
+              <input className="form-check-input" type="radio" name="gender" id="Male" value="Male" defaultChecked={!user.profile?.gender || user.profile.gender === 'Male'} />
+              <label className="form-check-label" htmlFor="Male">Male</label>
             </span>
             <span className="form-check d-inline-block mx-2">
-              <input className="form-check-input" type="radio" name="gender" id="female" value="female" defaultChecked={user.profile?.gender === 'female'} />
-              <label className="form-check-label" htmlFor="female">Female</label>
+              <input className="form-check-input" type="radio" name="gender" id="Female" value="Female" defaultChecked={user.profile?.gender === 'Female'} />
+              <label className="form-check-label" htmlFor="Female">Female</label>
             </span>
             <span className="form-check d-inline-block mx-2">
-              <input className="form-check-input" type="radio" name="gender" id="others" value="others" defaultChecked={user.profile?.gender === 'others'} />
-              <label className="form-check-label" htmlFor="others">Others</label>
+              <input className="form-check-input" type="radio" name="gender" id="Others" value="Others" defaultChecked={user.profile?.gender === 'Others'} />
+              <label className="form-check-label" htmlFor="Others">Others</label>
             </span>
           </div>
           {error.error && <div className="alert alert-danger w-100">{error.error}</div>}

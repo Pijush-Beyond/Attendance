@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import '../style.css'
 import LoginRegistration from './LoginRegistration';
 import { urls } from '../config.json';
@@ -16,7 +16,9 @@ const Login = () => {
   const [error, setError] = useState({ email: '', password: '', error: '' });
   const [redirect, setRedirect] = useState(false);
   const dispatch = useDispatch();
-  const user = useSelector(state => state.user.data)
+  const user = useSelector(state => state.user.data);
+
+  // useMemo(() => setRedirect(true), [user]);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -35,14 +37,14 @@ const Login = () => {
       dispatch(setcompany(user.data.data.company));
       delete user.data.data.company;
       dispatch(setuser(user.data.data));
-      setRedirect(true);
+      // setRedirect(true);
     } catch (e) {
       if (e.response) setError(e.response.data.error)
       else alert("Something went wrong!!");
     }
     dispatch(notloading())
   }
-  return redirect || user? <Redirect to="/"/> : <LoginRegistration propError={error} onSubmit={onSubmit} />
+  return user? <Redirect to="/"/> : <LoginRegistration propError={error} onSubmit={onSubmit} />
 }
 
 export default Login;

@@ -37,10 +37,10 @@ const Registration = () => {
         dispatch(setemployees(user.data.data.company.employees));
         delete user.data.data.company.employees;
       }
+      setRedirect(true);
       dispatch(setcompany(user.data.data.company));
       delete user.data.data.company;
       dispatch(setuser(user.data.data));
-      setRedirect(true);
     } catch (err) {
       if (err.response && err.response.status===400) setError({...error,...err.response.data.error})
       else alert("Something went wrong!!");
