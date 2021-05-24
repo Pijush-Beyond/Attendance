@@ -49,8 +49,7 @@ app.use(express.static(path.join(path.resolve('./'), 'public')))
 
 // routers starts here
 app.use(authentication);
-app.use(slot)
-
+app.use(slot);
 
 // app.all('/slot/:year/:month/:date', async (req, res, next) => {
 //   const router = new Slot();
