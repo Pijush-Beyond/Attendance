@@ -9,11 +9,11 @@ export default function Notifications() {
   if (mobile) {
     document.body.style.overflow = 'hidden';
     return (
-      <>
+      <React.Fragment>
         <div className="w-100 d-flex justify-content-center align-items-center" style={{height:'calc(100% - 59px)'}}>
           No Notifications !!
         </div>
-      </>
+      </React.Fragment>
     )
   }
   else return (

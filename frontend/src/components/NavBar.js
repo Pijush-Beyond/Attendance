@@ -12,12 +12,12 @@ export default function NavBar() {
   const [openNotification, setOpenNotification] = useState(false);
 
   return (
-    <>
+    <React.Fragment>
       <nav className="navbar p-0">
 
         <div className="d-flex align-items-center">
           {mobile &&
-            <>
+            <React.Fragment>
             <button className="fas fa-bars mx-2 btn btn-outline-primary fw-bold btn-icon px-2 py-1 fs-1" onClick={() => { setOpenMenu(true); document.body.style.overflow = 'hidden';}}></button>
               <div className="position-fixed top-0 bottom-0 start-0 end-0 navbar padding-0 justify-content-start align-items-start flex-column" style={{ backgroundColor: '#fffffff0', display: openMenu ? 'flex' : 'none', zIndex:10 }}>
               <button className="fas fa-times mx-3 btn fw-bold btn-icon px-2 py-1 fs-1" onClick={() => { setOpenMenu(false); document.body.style.overflow = 'initial';}}></button>
@@ -25,7 +25,7 @@ export default function NavBar() {
                 <Link to="/profile" onClick={() => setOpenMenu(false)} className="btn btn-outline-success btn-custom btn-block text-start">Profile</Link>
                 <a href={urls.logout} className="btn btn-outline-warning btn-custom btn-block text-start">Logout</a>
               </div>
-            </>
+            </React.Fragment>
           }
           <Link to="/" style={{ cursor: 'pointer' }} className="d-block">
             <svg id="Group_1" data-name="Group 1" xmlns="http://www.w3.org/2000/svg" width={mobile ? '28vw' : 140} className="m-2" viewBox="0 0 217.198 91.565">
@@ -90,6 +90,6 @@ export default function NavBar() {
           <Notifications />
         </div>
       } */}
-    </>
+    </React.Fragment>
   )
 }

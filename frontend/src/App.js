@@ -54,7 +54,7 @@ const RequireLogin = () => {
   if (!user.data) return <Redirect to="/login" />
   else if(user && !user.data.profile) return <Redirect to="/setProfile" />
   else return (
-    <>
+    <React.Fragment>
       <NavBar />
       <Switch>
         <Route exact path='/updateProfile' component={() => <UpdateProfile type={1} />} />
@@ -62,7 +62,7 @@ const RequireLogin = () => {
         <Route exact path='/addEmployee' component={AddEmployee} />
         <Route path="/" exact component={Home}/>
       </Switch>
-    </>
+    </React.Fragment>
   )
 }
 
