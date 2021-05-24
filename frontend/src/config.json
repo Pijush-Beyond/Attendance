@@ -1,12 +1,12 @@
 {
   "urls":{
-    "login": "http://localhost:3001/login/",
-    "logout": "http://localhost:3001/logout/",
-    "register": "http://localhost:3001/register/",
-    "update": "http://localhost:3001/update/",
-    "autologin": "http://localhost:3001/autoLogin/",
-    "addemployee": "http://localhost:3001/addEmployee/",
-    "accepetSlot": "http://localhost:3001/slot",
-    "giveSlot": "http://localhost:3001/slot"
+    "login": "http://ec2-52-91-22-191.compute-1.amazonaws.com/login/",
+    "logout": "http://ec2-52-91-22-191.compute-1.amazonaws.com/logout/",
+    "register": "http://ec2-52-91-22-191.compute-1.amazonaws.com/register/",
+    "update": "http://ec2-52-91-22-191.compute-1.amazonaws.com/update/",
+    "autologin": "http://ec2-52-91-22-191.compute-1.amazonaws.com/autoLogin/",
+    "addemployee": "http://ec2-52-91-22-191.compute-1.amazonaws.com/addEmployee/",
+    "accepetSlot": "http://ec2-52-91-22-191.compute-1.amazonaws.com/slot",
+    "giveSlot": "http://ec2-52-91-22-191.compute-1.amazonaws.com/slot"
   }
 }
