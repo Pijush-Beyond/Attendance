@@ -93,7 +93,7 @@ export default function UpdateProfile({ type }) {
 
       {
         type!==2 &&
-        <>
+        <React.Fragment>
           <div className="mb-2 w-100">
             <label htmlFor="firstName" className="form-label">First Name</label>
             <input defaultValue={(user.profile && user.profile.firstName) || ''} required onChange={onChange} name="firstName" id="firstName" type="text" className={`form-control ${submitFlag && error.firstName ? 'is-invalid' : ''}`} />
@@ -124,11 +124,11 @@ export default function UpdateProfile({ type }) {
     
           <button type="submit" className="btn btn-primary btn-block mb-2">{type === 1?'Update':'Alomst Set'}</button>
           {type === 1 && <Link to="/" className="btn btn-outline-primary btn-block">Cancel</Link>}
-        </>
+        </React.Fragment>
       }
       {
         type === 2 &&
-        <>
+        <React.Fragment>
           <div className="mb-2 d-flex">
             <div className="d-flex flex-column">
               <span className="form-label">Name:</span>
@@ -142,7 +142,7 @@ export default function UpdateProfile({ type }) {
             </div>
           </div>
           <Link to="/updateProfile" className="btn btn-primary">Edit Profile</Link>
-        </>
+        </React.Fragment>
       }
     </form>
     // </div>
