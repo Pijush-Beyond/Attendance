@@ -158,7 +158,7 @@ export const updateProfile = (userID, userUpdate) => new Promise(async (resolve,
     user.profile = profile;
   }
 
-  console.log(JSON.stringify(user,null,2))
+  // console.log(JSON.stringify(user,null,2))
 
   user.set({ ...userUpdateData, active: true });
   user.profile.set({...profileUpdateData, user})

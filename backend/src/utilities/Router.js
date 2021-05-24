@@ -26,7 +26,7 @@ export default class Router{
         // console.log("In router>>>\t",req,res,next);
         // console.log('response>>\t', typeof(this.midleware), Array.isArray(this.midleware));
 
-        console.log("this is in router");
+        // console.log("this is in router");
         return "This is me";
         res.status(200).json({ ...preResponse });
         
